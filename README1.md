@@ -28,8 +28,13 @@ SQL是关系数据库中操作的标准语言，例如查询、增加、修改�
 - SQL语言对数据库中的数据是大小写敏感的
 - 单行注释用“-- 注释内容”
 - 多行注释用“/*注释内容*/”
-- SQL语句可以写在一行也可以写在多行上。
+- SQL语句可以写在一行也可以写在多行上
+- SQL语句多句运行时记得有;号间隔
 
 ## 开启mysql
 开启mysql:用管理员身份打开cmd,net start mysql-回车-回车
 关闭: net stop mysql-回车-回车
+
+## 注：
+- 这个不是错误，当没看到
+[Err] 1055 - Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'information_schema.PROFILING.SEQ' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by
