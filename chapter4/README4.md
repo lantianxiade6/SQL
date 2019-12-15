@@ -65,7 +65,7 @@ ALTER TABLE T_dept DROP PRIMARY KEY
 删除表(由此表建立的相应视图也对被删除)
 DROP TABLE 表名 [CASCADE CONSTRAINTS]
 DROP TABLE T_teacher
-当要删除的表与其他表有外键约束是，需加CASCADE CONSTRAINTS
+当要删除的表与其他表有外键约束是，需加CASCADE CONSTRAINTS，如
 DROP TABLE T_curriculum CASCADE CONSTRAINTS
 但其实我的程序没有成功，这样才成功了：
 SET FOREIGN_KEY_CHECKS=0;-- 禁用外键约束

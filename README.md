@@ -1,4 +1,7 @@
 [第1章关系数据库介绍 & 第2章SQL语言概述](./README1.md)  
 [第3章 数据库的创建与删除](./chapter3.sql)
 [第4章 数据表的创建与更新](./chapter4/README4.md)
-[第5章 基础查询操作](./chapter5/README5.md)
+[第5章 基础查询操作](./README5.md)
+[第6章 使用WHERE子句查询表中满足条件的记录](./README6.md)
+[第7章 表中数据的排序与分组](./README7.md)
+[第8章 连接查询与集合查询](./README8.md)
