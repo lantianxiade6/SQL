@@ -44,6 +44,8 @@ ORDER BY R.stuID ASC
 ```
 - 非等值连接
 till here
+
+
 - 使用ON子句建立相等连接
 - 使用USING子句建立相等连接
 ## 2.交叉连接
