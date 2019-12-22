@@ -76,6 +76,7 @@ INSERT INTO T_result VALUES ('s112303', 't321', 65);
 INSERT INTO T_result VALUES ('s206363', 't105', 80);
 INSERT INTO T_result VALUES ('s206363', 't333', 55);
 INSERT INTO T_result VALUES ('s221256', 't232', 60);
+INSERT INTO T_result VALUES ('s253263', 't232', 60);-- 分数不正确
 INSERT INTO T_result VALUES ('s253263', 't321', 90);
 INSERT INTO T_result VALUES ('s253263', 't333', 53);
 INSERT INTO T_result VALUES ('s253263', 't105', 50);
@@ -90,11 +91,12 @@ INSERT INTO T_teacher VALUES ('t156355', '李中', 55, '女', 't_15','数学系'
 INSERT INTO T_teacher VALUES ('t181585', '李慧', 40, '女', 't_18','物理系','教授',3500,278);--  
 INSERT INTO T_teacher(teaID,teaName,age,sex,deptID,dept,profession,salary) VALUES ('t186585', '孙立', 48, '男', 't_18','物理系','讲师',3200);-- 
 
--- T_curriculum（课程编号、课程名称、学时）
+-- T_curriculum（课程编号、课程名称、学分、学时）
 INSERT INTO T_curriculum VALUES('t105','计算机系统结构',4,50,'赵伟');
 INSERT INTO T_curriculum VALUES('t232','数据库基础',5,50,'赵伟');
 INSERT INTO T_curriculum VALUES('t321','C语言',6,50,'赵伟');
 INSERT INTO T_curriculum VALUES('t333','高等数学',4,50,'赵伟');
+INSERT INTO T_curriculum VALUES('t542','操作系统',3,50,'赵伟');-- 学时是假的
 
 -- T_dept（行不完整）
 INSERT INTO T_dept VALUES('t_10','计算机系');
