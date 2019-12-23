@@ -102,3 +102,10 @@ INSERT INTO T_curriculum VALUES('t542','操作系统',3,50,'赵伟');-- 学时�
 INSERT INTO T_dept VALUES('t_10','计算机系');
 INSERT INTO T_dept VALUES('t_15','数学系');
 INSERT INTO T_dept VALUES('t_18','物理系');
+
+
+-- T_CSteacher（行不完整）
+INSERT INTO T_CSteacher VALUES('t102225', '赵伟', 38, '男', 't_10','计算机系','副教授',3000,260.5);
+INSERT INTO T_CSteacher VALUES ('t103265', '张昌', 43, '男', 't_10','计算机系','教授',3800,300);-- 
+INSERT INTO T_CSteacher(teaID,teaName,age,sex,deptID,dept,profession,salary) VALUES ('t105320', '于波', 28, '男', 't_10','计算机系','讲师',2800);-- 
+INSERT INTO T_CSteacher VALUES ('t106358', '毛翠', 50, '女', 't_10','计算机系','教授',4000,289.3);--  

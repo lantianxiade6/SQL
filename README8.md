@@ -139,7 +139,48 @@ MySQL并不支持全外连接，Oracle就有
 
 ## 5.集合查询
 - 并操作
-返回两个查询语句中查询出来所有不同的行，不包含重复行。
-Till here
+返回两个查询语句中查询出来所有不同的行，不包含重复行。但两个查询语句查询出来的列数必须相同，而且对应的列的数据类型必须一致。若要保留重复行，可以使用UNION ALL关键字。
+```
+SELECT 语句1
+UNION
+SELECT 语句2
+
+-- 这个操作等同于全外连接
+SELECT R.stuID, R.curID, C.curName
+FROM t_result R LEFT JOIN t_curriculum C
+on R.curID=C.curID
+UNION
+SELECT R.stuID, R.curID, C.curName
+FROM t_result R RIGHT JOIN t_curriculum C
+on R.curID=C.curID
+```
 - 交操作
+交操作返回的结果集包括了连接查询结果的公共行。但两个查询语句查询出来的列数必须相同，而且对应的列的数据类型必须一致。
+```
+SELECT 语句1
+INTERSECT
+SELECT 语句2
+
+-- 但MySQL不支持INTERSECT关键字，Oracle和Microsoft SQL Server才支持
+(SELECT teaID, teaName, dept, profession
+FROM t_teacher)
+INTERSECT
+(SELECT teaID, teaName, dept, profession
+FROM t_CSteacher)
+```
 - 差操作
+差操作返回的记录结果集只在第一个SELECT语句总出现，但不存在于第二个SELECT语句的查询结果中。但两个查询语句查询出来的列数必须相同，而且对应的列的数据类型必须一致。
+```
+SELECT 语句1
+MINUS
+SELECT 语句2
+
+-- Oracle可以使用MINUS关键字完成差操作；
+-- Microsoft SQL Server可以使用EXCEPT关键字完成差操作。
+-- 但MySQL不支持MINUS和EXCEPT关键字。
+(SELECT teaID, teaName, dept, profession
+FROM t_teacher)
+MINUS
+(SELECT teaID, teaName, dept, profession
+FROM t_CSteacher)
+```
