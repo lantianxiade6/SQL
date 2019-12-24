@@ -104,12 +104,88 @@ FROM t_result T
 WHERE
 S.stuID=T.stuID
 AND T.curID='t105')
+-- 相关子查询里面用SELECT *即可，因为不管查询哪个字段，都是只返回TRUE或FALSE而已
 ```
 - 带有NOT EXISTS关键字的相关子查询
-till here
+  - 若返回TRUE，则外层查询的WHERE子句就返回FALSE
+  - 若返回FALSE，则外层查询的WHERE子句就返回TRUE
+```
+-- 查询没有选修课程编号为t105的学生信息
+SELECT S.stuID, S.stuName, S.age, S.sex
+FROM t_student S
+WHERE NOT EXISTS
+(SELECT *
+FROM t_result T
+WHERE
+S.stuID=T.stuID
+AND T.curID='t105')
+```
 ## 5.在SQL语句中使用子查询
-- 在SELECT字句中使用子查询
-- 在FROM字句中实现子查询
+- 在SELECT子句中使用子查询
+  - 该子查询查询出来的结果应该是一个具体的值
+```
+SELECT R.stuID,
+(SELECT stuName
+FROM t_student
+WHERE stuID=R.stuID) AS stuName, R.result, R.curID
+FROM t_result R
+WHERE R.stuID='s102203'
+ORDER BY R.result ASC
+```
+- 在FROM子句中实现子查询
+  - 该子查询查询出来的结果集组成一个临时的数据表
+```
+SELECT R.stuID, C.curID, C.curName, R.result
+FROM t_curriculum C,
+(SELECT curID, stuID, result
+FROM t_result) R
+WHERE R.curID=C.curID
+AND R.stuID='s102203'
+ORDER BY R.result ASC
+-- FROM子句中使用子查询时，必须指定子查询的别名
+```
 - 在HAVING字句中实现子查询
+  - 该子查询查询出来的结果集组成一个临时的数据表
+```
+-- 查询学生编号以s2开头的学生的平均成绩
+SELECT R.stuID, AVG(R.result)
+FROM t_result R, t_curriculum C
+WHERE R.curID=C.curID
+GROUP BY R.stuID
+HAVING R.stuID IN
+(SELECT stuID
+FROM t_student
+WHERE stuID LIKE 's2%')
+ORDER BY R.stuID
+```
 ## 6.多重子查询
+- 查询条件中有多个子查询语句
+```
+-- 查询院系和职称都与教师编号t103265相同的教师信息
+SELECT teaID, teaName, age, sex, dept, profession
+FROM t_teacher
+WHERE dept=
+(SELECT dept FROM t_teacher WHERE teaID='t103265')
+AND profession=
+(SELECT profession FROM t_teacher WHERE teaID='t103265')
+
+-- 查询职称与教师编号为t181585相同但工资更高的教师信息
+SELECT teaID, teaName, age, sex, dept, profession, salary
+FROM t_teacher
+WHERE profession=
+(SELECT profession FROM t_teacher WHERE teaID='t181585')
+AND salary>
+(SELECT salary FROM t_teacher WHERE teaID='t181585')
+```
 ## 7.在CREATE TABLE语句中使用子查询实现数据表的复制
+- 新创建的数据表不能继承原数据表的主键、约束条件等信息
+```
+CREATE TABLE 表名
+AS
+SELECT语句
+
+CREATE TABLE T2_student
+AS 
+SELECT stuID, stuName, age, sex, birth
+FROM t_student
+```
