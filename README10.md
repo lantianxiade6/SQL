@@ -106,16 +106,40 @@ SELECT ROUND(0.1234,2)
 -- （7）余数
 SELECT MOD(13,5)-- 13除以5的余数
 SELECT 13%5
-till here
--- （8）
--- （9）
--- （10）
--- （11）
--- （12）
--- （13）
--- （14）
--- （15）
--- （16）
+
+-- （8）大于等于指定数的最小整数
+SELECT CEIL(10.5)
+SELECT CEILING(10.5)
+
+-- （9）小于等于指定数的最大整数
+SELECT FLOOR(10.5)
+
+-- （10）正弦、余弦
+SELECT SIN(PI()/2)
+SELECT COS(PI()/3)
+
+-- （11）正切、余切
+SELECT TAN(PI()/4)
+SELECT COT(PI()/4)
+
+-- （12）反正弦、反余弦
+SELECT ASIN(1)
+SELECT ACOS(0.5)
+
+-- （13）反正切
+SELECT ATAN(2)
+SELECT ATAN2(10,5)-- 10除以5的反正切
+
+-- （14）弧度与角度互换
+SELECT DEGREES(PI()/3)--弧度pi/3对应的角度
+SELECT RADIANS(60)--60度角对应的弧度数
+
+-- （15）正负符号检测
+SELECT SIGN(-3),SIGN(4)
+
+-- （16）截取
+TRUNCATE(n,m)--m若为正整数表示截取n到小数点右侧第m位，m为0表示截掉n的小数部分，m为负整数表示截取n到小数点左侧第m位
+SELECT TRUNCATE(1234.5678,2),TRUNCATE(1234.5678,0),TRUNCATE(1234.5678,-2)
 ```
 ## 3.日期时间函数
 ## 4.类型转换函数
