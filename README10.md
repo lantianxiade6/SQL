@@ -85,13 +85,28 @@ REPEAT(string,count)-- 将string重复count次
 SELECT REPEAT('SQL',2)
 ```
 ## 2.数值函数
--- （1）
--- （2）
--- （3）
--- （4）
--- （5）
--- （6）
--- （7）
+```
+-- （1）绝对值
+SELECT abs(-3)
+-- （2）平方
+SELECT SQUARE(-3)-- Microsoft SQL server才有
+SELECT POWER(-3,2)-- 负3的平方
+-- （3）平方根
+SELECT SQRT(9)
+-- （4）对数
+SELECT LOG(9)-- 9的自然对数
+SELECT LOG10(10)-- 以10为底10的对数
+SELECT LOG(10,100)--以10为底100的对数
+-- （5）幂
+SELECT EXP(2)-- e的2次幂
+SELECT POWER(2,3)-- 2的3次幂
+-- （6）四舍五入
+ROUND(n[,m])-- 对n保留m位小数，m默认为0;当m为负数时表示四舍五入小数点左边的第m位
+SELECT ROUND(0.1234,2)
+-- （7）余数
+SELECT MOD(13,5)-- 13除以5的余数
+SELECT 13%5
+till here
 -- （8）
 -- （9）
 -- （10）
@@ -101,7 +116,7 @@ SELECT REPEAT('SQL',2)
 -- （14）
 -- （15）
 -- （16）
-
+```
 ## 3.日期时间函数
 ## 4.类型转换函数
 ## 5.比较函数
