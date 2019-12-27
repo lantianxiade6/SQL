@@ -175,7 +175,7 @@ DAY_SECOND|小时数、分钟数和秒数('hh:mm:ss')
 
 - 指定工作日之后的日期
 ```
-NEXT_DAY(date,n)-- date之后的下周日(n=1)/下周一(n=2)...
+NEXT_DAY(date,n)-- date之后的下周日(n=1)、下周一(n=2)...
 ```
 
 - 日期中的指定内容
@@ -222,6 +222,38 @@ TRUNC(date[,fmt])-- MySQL不适用
 ```
 ## 4.类型转换函数
 ### (1)字符转换函数
+```
+CAST(expression AS datatype[length])
+```
+- expression为数字值或日期值
+- datatype为要转换成的数据类型，可以是字符类型、数值类型、日期类型等等
+- length为数据长度
+```
+SELECT teaID, teaName, CAST(salary as CHAR(5))
+FROM t_teacher
+```
+### (2)日期转换函数
+```
+DATE_FORMAT(date,fmt)-- 将date按给定格式fmt转换
+SELECT now(), DATE_FORMAT(NOW(),'%W %M %D %Y'), DATE_FORMAT(NOW(),'%H:%i:%s')
+SELECT now(), TIME_FORMAT(NOW(),'%H:%i:%s')
+```
+[DATE_FORMAT参数符号含义](./DATE_FORMAT.jpg)
+### (3)数值转换函数
+```TO_NUMBER(char,[,fmt[,'nlsparams']])-- MySQL不适用```
 ## 5.比较函数
+- 最小值
+SELECT LEAST(10,15,6,20)
+- 最大值
+SELECT GREATEST(10,15,6,20)
+- 比较两个字符串
+```STRCMP(string1,string2)```
+  - string1>string2则返回1
+  - string1=string2则返回0
+  - string1<string2则返回-1
+```
+SELECT STRCMP('mysql','my'),STRCMP('mysql','mySQL'),STRCMP('mysql','mysql2')
+```
 ## 6.空值处理函数
+till here
 ## 7.分支函数和条件表达式
