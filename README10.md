@@ -142,7 +142,86 @@ TRUNCATE(n,m)--m若为正整数表示截取n到小数点右侧第m位，m为0表
 SELECT TRUNCATE(1234.5678,2),TRUNCATE(1234.5678,0),TRUNCATE(1234.5678,-2)
 ```
 ## 3.日期时间函数
+
+- 取得当前系统日期时间
+```
+SELECT NOW(), SYSDATE(), CURRENT_DATE(), CURRENT_TIME()
+```
+- 对日期时间进行加减运算
+```
+DATE_ADD(日期时间,INTERVAL 数值 type关键字)
+SELECT NOW(), DATE_ADD(NOW(),INTERVAL 1 DAY)-- 加1天
+SELECT NOW(), DATE_ADD(NOW(),INTERVAL 1 YEAR)-- 加1年
+SELECT NOW(), DATE_ADD(NOW(),INTERVAL '01:10' DAY_MINUTE)
+
+DATE_SUB(日期时间,INTERVAL 数值 type关键字)
+SELECT NOW(), DATE_SUB(NOW(),INTERVAL 3 MONTH)-- 减3个月
+```
+type关键字|在DATE_ADD函数中的意义
+----|----
+YEAR|年数
+MONTH|月数
+QUARTER|季度
+WEEK|周数
+DAY|天数
+HOUR|小时数
+MINUTE|分钟数
+SECOND|秒数
+MICOSECOND|微秒数
+YEAR_MONTH|年数和月数('yy-mm')
+DAY_HOUR|小时数('hh')
+DAY_MINUTE|小时数和分钟数('hh:mm')
+DAY_SECOND|小时数、分钟数和秒数('hh:mm:ss')
+
+- 指定工作日之后的日期
+```
+NEXT_DAY(date,n)-- date之后的下周日(n=1)/下周一(n=2)...
+```
+
+- 日期中的指定内容
+
+函数|含义
+--|--
+DAYOFYEAR(date)|一年当中的某一天(1-366)
+DAYOFMONTH(date)|一月当中的某一天(1-31)
+DAYOFWEEK(date)|星期(周日为1，周一为2，...，周六是7)
+WEEKOFYEAR(date)|一年当中的某一个星期(1-53)
+DAYNAME(date)|天，如Monday、Tuesday等
+MONTHNAME(date)|月份，如January、February等
+YEAR(date)|年份(1000-9999)
+MONTH(date)|月份(1-12)
+WEEKDAY(date)|星期值(0-6)其中0代表星期一，6代表星期日
+WEEK(date)|date在一年中是第几个星期，以周日为每个星期的第一天
+WEEK(date,first)|date在一年中是第几个星期；first指定每一个星期的第一天是从周几开始的，0是周日，1是周一
+HOUR(time)|小时(0-23)
+MINUTE(time)|分钟(0-59)
+SECOND(time)|秒(0-59)
+
+```
+SELECT NOW(),DAYOFYEAR(NOW()),DAYOFMONTH(NOW()),DAYOFWEEK(NOW()),WEEKOFYEAR(NOW())
+SELECT NOW(),DAYNAME(NOW()),MONTHNAME(NOW())
+SELECT NOW(),YEAR(NOW()),MONTH(NOW()),DAY(NOW()),WEEKDAY(NOW())
+SELECT NOW(),WEEK(NOW()),WEEK(NOW(),1)
+SELECT NOW(),HOUR(NOW()),MINUTE(NOW()),SECOND(NOW())
+```
+- 指定日期所在月的最后一天
+```
+SELECT NOW(),LAST_DAY(NOW())
+```
+- 两个月份的差
+```
+MONTHS_BETWEEN(date1,date2)-- MySQL不适用
+```
+- 对日期时间进行四舍五入
+```
+ROUND(date[,fmt])-- MySQL不适用
+```
+- 截断指定的日期时间
+```
+TRUNC(date[,fmt])-- MySQL不适用
+```
 ## 4.类型转换函数
+### (1)字符转换函数
 ## 5.比较函数
 ## 6.空值处理函数
 ## 7.分支函数和条件表达式
