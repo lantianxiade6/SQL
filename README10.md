@@ -255,5 +255,34 @@ SELECT GREATEST(10,15,6,20)
 SELECT STRCMP('mysql','my'),STRCMP('mysql','mySQL'),STRCMP('mysql','mysql2')
 ```
 ## 6.空值处理函数
-till here
+```
+IFNULL(expression1,expression2)-- 如果expression1为NULL则返回expression2，否则返回expression1
+ISNULL(expression1)-- 根据expression1是否为NULL返回1或0
+COALESCE(expression1,expression2,expression3...)-- 返回第一个不为NULL的值，全为NULL则返回NULL
+
+SELECT teaID, teaName, salary, pension,IFNULL(pension,0), ISNULL(pension)
+FROM t_teacher
+
+SELECT teaID, teaName, salary, pension, COALESCE(pension,salary)
+FROM t_teacher
+```
 ## 7.分支函数和条件表达式
+### 1.IF函数
+```
+IF(expression,result1,result2)-- 若expression为TRUE则返回result1，否则返回result2
+
+SELECT teaID, teaName, dept, salary,
+IF(dept='计算机系',salary+300,
+IF(dept='数学系',salary+200,
+IF(dept='物理系',salary+100,salary))) AS newSalary 
+FROM t_teacher
+```
+### 2.CASE条件表达式
+```
+CASE expression
+WHEN value1 THEN result1
+[WHEN value2 THEN result2
+...]
+[ELSE default_result]
+-- 如果表达式expression能匹配到value就返回相应的result
+```
