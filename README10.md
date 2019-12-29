@@ -279,10 +279,36 @@ FROM t_teacher
 ```
 ### 2.CASE条件表达式
 ```
+(1)单一的条件表达式进行等值比较
 CASE expression
 WHEN value1 THEN result1
 [WHEN value2 THEN result2
 ...]
 [ELSE default_result]
+END
 -- 如果表达式expression能匹配到value就返回相应的result
+
+SELECT teaID, teaName, dept, salary, CASE dept
+WHEN '计算机系' THEN salary+300
+WHEN '数学系' THEN salary+500
+WHEN '物理系' THEN salary+100
+ELSE salary
+END newSalary
+FROM t_teacher
+
+(2)多条件比较
+CASE
+WHEN condition1 THEN result1
+WHEN condition2 THEN result2
+...
+[ELSE default_result]
+END
+
+SELECT teaID, teaName, age, salary, CASE
+WHEN age<=30 THEN salary+300
+WHEN age<=40 THEN salary+200
+WHEN age<=50 THEN salary+100
+ELSE salary
+END newSalary
+FROM t_teacher
 ```
