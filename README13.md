@@ -31,7 +31,26 @@ WHERE stuID='s281234'
 ```
 
 - 修改多行记录
-till here
+其实满足WHERE子句中指定条件的记录就都会被修改
+```
+UPDATE t_result
+SET result=result+10
+WHERE stuID='s281234'
+```
+
 - 使用子查询修改数据记录
+```
+UPDATE 表名
+SET 子查询
+WHERE 条件
+
+-- 但这句是跑不通的
+UPDATE t_curriculum
+SET (learntime,credit)=
+(SELECT learntime,credit
+FROM t_curriculum
+WHERE curName='C语言')
+WHERE curName='操作系统'
+```
 - 使用CASE条件表达式修改多行记录
 ## 在视图中修改数据记录
