@@ -52,5 +52,5 @@ FROM t_curriculum
 WHERE curName='C语言')
 WHERE curName='操作系统'
 ```
-- 使用CASE条件表达式修改多行记录
+- 使用CASE条件表达式修改多行记录 -- till here page 206
 ## 在视图中修改数据记录
